@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Spotify Overlay</title>
+    <style>
+      :root {
+        --padding: 5px;
+      }
+
+      * {
+        user-select: none;
+      }
+
+      body {
+        background: transparent;
+        backdrop-filter: blur(10px);
+        margin : 0;
+        font-family: "Circular", sans-serif;
+        overflow: hidden;
+      }
+
+      #spotify-container {
+        width: max-content;
+        min-width: 200px;
+        padding: 0 var(--padding);
+        height: 55px;
+        display: flex;
+        background-color: #202020ee;
+        border-radius: 5px;
+      }
+
+      #spotify-song-cover {
+        width: 45px;
+        height: 45px;
+        margin-top: var(--padding);
+        left: var(--padding);
+        background-color: #2d1db9;
+        background-image: url("");
+        background-size: cover;
+        background-position: center;
+        border-radius: 4px;
+      }
+
+      .spotify-song-infos {
+        flex: 1;
+        margin-left: var(--padding);
+      }
+
+      #spotify-song-title {
+        margin-top: 14px;
+        margin-bottom: 3px;
+        color: #b3b3b3;
+      }
+
+      #spotify-song-name {
+        color: #cccccc;
+      }
+
+      #spotify-progress {
+        display: flex;
+        align-items: center;
+        width: calc(100% - var(--padding));
+      }
+
+      #spotify-progress .time {
+        margin: 0;
+      }
+
+      #spotify-progress-bar {
+        flex: 1;
+        height: 5px;
+        position: relative;
+        margin-left: var(--padding);
+        margin-right: var(--padding);
+      }
+
+      .progress-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      #spotify-progress-bar-bg {
+        width: 100%;
+        height: 100%;
+        background-color: #5E5E5E;
+        border-radius: 5px;
+      }
+
+      #spotify-progress-bar-current {
+        width: 0%;
+        height: 100%;
+        background-color: #1DB954;
+        border-radius: 5px;
+      }
+
+      .time {
+        color: #a7a7a7;
+        font-size: 90%;
+      }
+
+    </style>
+  </head>
+  <body>
+    
+    <div id="spotify-container">
+      <div id="spotify-song-cover"></div>
+      <div class="spotify-song-infos">
+        <p id="spotify-song-title"><span id="spotify-song-name"></span> • <span id="spotify-song-author"></span></p>
+
+        <div id="spotify-progress">
+          <p id="spotify-progress-lbl-current" class="time"></p>
+          
+          <div id="spotify-progress-bar">
+            <div id="spotify-progress-bar-bg" class="progress-bar"></div>
+            <div id="spotify-progress-bar-current" class="progress-bar"></div>
+          </div>
+          
+          <p id="spotify-progress-lbl-max" class="time" ></p>
+        </div>
+
+      </div>
+    </div>
+
+    <script src="spotify.js"></script>
+    <script src="mouse_listener.js"></script>
+  </body>
+</html>
