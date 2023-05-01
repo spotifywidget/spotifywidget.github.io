@@ -1,5 +1,5 @@
 const clientId = '92b44cefd3ab4a018c6820f66f1cdfe7';
-const redirectUri = 'http://localhost/SpotifyWidget/index.html';
+const redirectUri = 'https://spotifywidget.github.io/index.html';
 const responseType = 'token';
 const scope = 'user-read-currently-playing';
 
