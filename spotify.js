@@ -9,6 +9,7 @@ function login() {
         '&redirect_uri=' + encodeURIComponent(redirectUri) +
         '&response_type=' + encodeURIComponent(responseType) +
         '&scope=' + encodeURIComponent(scope);
+    window.electron.ipcRenderer.send('resizeWindow', 0);
     window.location.href = authUrl;
 }
 
@@ -61,13 +62,11 @@ async function displayCurrentPlayingTrack() {
                 document.getElementById('spotify-progress-lbl-max').innerHTML = durationMinSec;
                 document.getElementById('spotify-song-cover').style.backgroundImage = 'url(\'' + imageUrl + '\')';
 
-                min_width = 200;
                 document.getElementById('spotify-progress-bar-current').style.width = ((progressMs/durationMs) * 100) + '%';
 
                 widget_width = document.getElementById('spotify-container').offsetWidth;
                 window.electron.ipcRenderer.send('resizeWindow', widget_width);
 
-                // Ajout du code pour copier le lien vers la musique actuelle dans le presse-papiers
                 const currentTrackLink = currentTrack.external_urls.spotify;
                 document.addEventListener('click', function() {
                         navigator.clipboard.writeText(currentTrackLink)
@@ -83,6 +82,7 @@ async function displayCurrentPlayingTrack() {
         }
     } catch (error) {
         console.error('Erreur:', error.message);
+        window.electron.ipcRenderer.send('resizeWindow', 0);
     }
 }
 
