@@ -75,7 +75,7 @@ async function displayCurrentPlayingTrack() {
                 );
                 
             } else {
-                console.log('Aucune musique en cours de lecture.');
+                window.electron.ipcRenderer.send('resizeWindow', 0);
             }
         } else {
             console.error('Erreur: access_token non disponible.');
