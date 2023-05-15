@@ -47,12 +47,7 @@ async function displayCurrentPlayingTrack() {
             const data = await getCurrentPlayingTrack(accessToken);
             const currentTrack = data.item;
             if (currentTrack) {
-                const imageUrl = currentTrack.album.images.reduce((smallestImage, image) => {
-                    if (!smallestImage || image.width < smallestImage.width) {
-                        return image;
-                    }
-                    return smallestImage;
-                }, null).url;
+                const imageUrl = currentTrack.album.images[1].url;
 
                 const mainArtist = currentTrack.artists[0].name;
                 const durationMs = currentTrack.duration_ms;
