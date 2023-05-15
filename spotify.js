@@ -9,7 +9,7 @@ function login() {
         '&redirect_uri=' + encodeURIComponent(redirectUri) +
         '&response_type=' + encodeURIComponent(responseType) +
         '&scope=' + encodeURIComponent(scope);
-    window.electron.ipcRenderer.send('resizeWindow', 0);
+    window.electron.ipcRenderer.send('resizeWindow', 450);
     window.location.href = authUrl;
 }
 
